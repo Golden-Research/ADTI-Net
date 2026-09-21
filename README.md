@@ -15,8 +15,7 @@ Recent advances in video object detection demonstrate that spatiotemporal featur
 
 | Method | Backbone | Base Detector | mAP (%) | Runtime (ms) |
 | :-----: | :------: | :-----------: | :-----: | :----------: |
-| Deformable DETR (baseline) | ResNet-101 | Deformable DETR | 78.4 | – |
-| CETR | ResNet-101 | Deformable DETR | 79.6 | – |
+| CETR | ResNet-101 | Deformable DETR | 79.6 | 42.9 |
 | CDANet | ResNet-101 | Deformable DETR | 85.4 | 80.6 |
 | IMC-Det | ResNet-101 | Deformable DETR | 85.5 | 79.8 |
 | TGBFormer | ResNet-101 | Deformable DETR | 86.5 | 24.3 |
