@@ -75,7 +75,7 @@ The expected directory structure is:
 
     code_root/
     └── datasets/
-        └── imagenet_vid/
+        └── ImageNet VID/
             ├── ImageSets/
             ├── Data/
             │   ├── DET/
@@ -92,7 +92,7 @@ and organize the dataset according to the following structure:
 
     code_root/
     └── datasets/
-        └── uavdt/
+        └── UAVDT/
             ├── UAV-benchmark-M/
             └── UAV-benchmark-MOTD_v1.0/
 
