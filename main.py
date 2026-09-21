@@ -27,12 +27,12 @@ from models import build_model
 
 def get_args_parser():
     parser = argparse.ArgumentParser('Deformable DETR Detector', add_help=False)
-    parser.add_argument('--lr', default=2e-4, type=float)
+    parser.add_argument('--lr', default=1e-4, type=float)
     parser.add_argument('--lr_backbone_names', default=["backbone.0"], type=str, nargs='+')
     parser.add_argument('--lr_backbone', default=2e-5, type=float)
     parser.add_argument('--lr_linear_proj_names', default=['reference_points', 'sampling_offsets'], type=str, nargs='+')
     parser.add_argument('--lr_linear_proj_mult', default=0.1, type=float)
-    parser.add_argument('--batch_size', default=2, type=int)
+    parser.add_argument('--batch_size', default=1, type=int)
     parser.add_argument('--weight_decay', default=1e-4, type=float)
     parser.add_argument('--epochs', default=15, type=int)
     parser.add_argument('--lr_drop', default=5, type=int)
@@ -40,7 +40,7 @@ def get_args_parser():
     parser.add_argument('--clip_max_norm', default=0.1, type=float,
                         help='gradient clipping max norm')
     
-    parser.add_argument('--num_ref_frames', default=3, type=int, help='number of reference frames')
+    parser.add_argument('--num_ref_frames', default=4, type=int, help='number of randomly sampled support frames (excluding the target frame)')
 
     parser.add_argument('--sgd', action='store_true')
 
@@ -53,7 +53,7 @@ def get_args_parser():
                         help="Path to the pretrained model. If set, only the mask head will be trained")
 
     # * ADTI-Net (base model)
-    parser.add_argument('--model_type', default='transvod',
+    parser.add_argument('--model_type', default='adti',
                         choices=['transvod', 'adti'],
                         help="Model variant: original baseline or ADTI-Net")
     parser.add_argument('--num_s_dtd_layers', default=2, type=int,
@@ -85,7 +85,7 @@ def get_args_parser():
                              "N-1 with N=30, i.e. 29")
 
     # * Backbone
-    parser.add_argument('--backbone', default='resnet50', type=str,
+    parser.add_argument('--backbone', default='resnet101', type=str,
                         help="Name of the convolutional backbone to use")
     parser.add_argument('--dilation', action='store_true',
                         help="If true, we replace stride with dilation in the last convolutional block (DC5)")
@@ -107,10 +107,10 @@ def get_args_parser():
                         help="Size of the embeddings (dimension of the transformer)")
     parser.add_argument('--dropout', default=0.1, type=float,
                         help="Dropout applied in the transformer")
-    parser.add_argument('--nheads', default=8, type=int,
+    parser.add_argument('--nheads', default=4, type=int,
                         help="Number of attention heads inside the transformer's attentions")
-    parser.add_argument('--num_queries', default=300, type=int,
-                        help="Number of query slots")
+    parser.add_argument('--num_queries', default=72, type=int,
+                        help="Object queries per frame: ImageNet VID R101=72, Swin=48; UAVDT R101=100, Swin=80")
     parser.add_argument('--dec_n_points', default=4, type=int)
     parser.add_argument('--enc_n_points', default=4, type=int)
     parser.add_argument('--n_temporal_decoder_layers', default=1, type=int)
@@ -265,7 +265,10 @@ def main(args):
         optimizer = torch.optim.AdamW(param_dicts, lr=args.lr,
                                       weight_decay=args.weight_decay)
     print(args.lr_drop_epochs)
-    lr_scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, args.lr_drop_epochs)
+    # Milestones are in epochs in this engine; the paper specifies a drop at 120K iterations.
+    # Pass --lr_drop_epochs computed from the actual distributed dataloader length.
+    lr_milestones = args.lr_drop_epochs if args.lr_drop_epochs is not None else [args.lr_drop]
+    lr_scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=lr_milestones, gamma=0.1)
 
     if args.distributed:
         model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[args.gpu], find_unused_parameters=True)
