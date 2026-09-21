@@ -12,7 +12,6 @@ Recent advances in video object detection demonstrate that spatiotemporal featur
 
 ## Main Results
 
-This repository provides the base model **ADTI-Net** only (the variants ADTI-Net++ and ADTI-Net Lite are not included).
 
 ### Comparison on ImageNet VID
 
