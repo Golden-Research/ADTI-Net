@@ -1,0 +1,7 @@
+pycocotools
+tqdm
+cython
+scipy
+# optional: CLIP text encoder for the TFIL module of ADTI-Net
+# (falls back to learnable class embeddings when unavailable)
+transformers
