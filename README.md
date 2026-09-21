@@ -46,48 +46,22 @@ The codebase is built on top of [Deformable DETR](https://github.com/fundamental
 
 ### Requirements
 
-* Linux, CUDA>=9.2, GCC>=5.4
+* Linux, CUDA 12.1, GCC>=10
 
-* Python>=3.7
+* Python>=3.10
 
-  We recommend using Anaconda to create a conda environment:
+  We recommend using Anaconda to create a conda environment
 
-  ```bash
-  conda create -n ADTI-Net python=3.7 pip
-  conda activate ADTI-Net
-  ```
 
-* PyTorch>=1.5.1, torchvision>=0.6.1 (following instructions [here](https://pytorch.org/))
 
-  ```bash
-  conda install pytorch=1.5.1 torchvision=0.6.1 cudatoolkit=9.2 -c pytorch
-  ```
+* PyTorch>=2.1.2, torchvision>=0.16.2 (following instructions [here](https://pytorch.org/))
+
 
 * Other requirements
 
   ```bash
   pip install -r requirements.txt
   ```
-
-* Build MultiScaleDeformableAttention
-
-  ```bash
-  cd ./models/ops
-  sh ./make.sh
-  ```
-
-  The spatial/temporal deformable attention used by the ADTD module shares this
-  operator. When the compiled operator is unavailable, a pure-PyTorch fallback
-  is used automatically (same result, slower).
-
-* Optional: the CLIP text encoder of the TFIL module requires `transformers`.
-
-  ```bash
-  pip install transformers
-  ```
-
-  Without it, the textual features are replaced by learnable class embeddings,
-  so training and inference still work.
 
 ## Usage
 
