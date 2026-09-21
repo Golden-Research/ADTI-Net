@@ -147,6 +147,7 @@ def get_args_parser():
     parser.add_argument('--dataset_file', default='vid_multi')
     parser.add_argument('--coco_path', default='./data/coco', type=str)
     parser.add_argument('--vid_path', default='./data/vid', type=str)
+    parser.add_argument('--uavdt_path', default='./data/UAVDT', type=str)
     parser.add_argument('--coco_pretrain', default=False, action='store_true')
     parser.add_argument('--coco_panoptic_path', type=str)
     parser.add_argument('--remove_difficult', action='store_true')
