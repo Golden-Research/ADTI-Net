@@ -136,12 +136,7 @@ Evaluate the full ADTI-Net framework using the trained checkpoint:
 ./tools/eval_adti.sh exps/ADTI-Net/r101_adti checkpoint.pth
 ```
 
-## Visualization
 
-<div align="center">
-  <img src="figs/1.gif" alt="Visualization 1" width="48%">
-  <img src="figs/2.gif" alt="Visualization 2" width="48%">
-</div>
 
 ## Acknowledgement
 
