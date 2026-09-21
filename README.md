@@ -128,8 +128,6 @@ GPUS_PER_NODE=4 ./tools/run_dist_launch.sh 4 configs/r101_train_adti.sh \
     --resume exps/our_models/exps_single/checkpoint.pth
 ```
 
-ADTI-Net is trained end-to-end (no parameter freezing is applied). The
-checkpoint is saved as `exps/adti_net/r101_adti_base/checkpoint.pth`.
 
 ### Evaluation
 
