@@ -65,7 +65,7 @@ The codebase is built on top of [Deformable DETR](https://github.com/fundamental
 
 ### Dataset Preparation
 
-M2TDiff is evaluated on the widely used video object detection benchmark, **ImageNet VID**. To further evaluate its generalization capability, we additionally conduct experiments on **UAVDT**. Before training and evaluation, we convert the annotations of both datasets into JSON format using `tools/convert_to_vid_json.py`.
+ADTI-Net is evaluated on the widely used video object detection benchmark, **ImageNet VID**. To further evaluate its generalization capability, we additionally conduct experiments on **UAVDT**. Before training and evaluation, we convert the annotations of both datasets into JSON format using `tools/convert_to_vid_json.py`.
 
 #### ImageNet VID
 
