@@ -169,15 +169,4 @@ for releasing their code:
 * [Deformable DETR](https://github.com/fundamentalvision/Deformable-DETR)
 * [CLIP](https://github.com/openai/CLIP) (text encoder of the TFIL module)
 
-## Citing
 
-If you find this work useful in your research, please consider citing:
-
-```bibtex
-@article{qi2026adti,
-  title={ADTI-Net: Alternating Decoupled Transformer Imitation Network for Video Object Detection},
-  author={Qi, Qiang and Yan, Yan and Shang, Wenqi and Wang, Hanzi},
-  journal={IEEE Transactions on Image Processing},
-  year={2026}
-}
-```
