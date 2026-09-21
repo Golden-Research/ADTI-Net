@@ -137,6 +137,13 @@ Evaluate the full ADTI-Net framework using the trained checkpoint:
 ./tools/eval_m2tdiff.sh exps/m2tdiff/r101_m2tdiff checkpoint.pth
 ```
 
+## Visualization
+
+<div align="center">
+  <img src="assets/images/2.gif" alt="Visualization 1" width="48%">
+  <img src="assets/images/3.gif" alt="Visualization 2" width="48%">
+</div>
+
 ## Acknowledgement
 
 This project is developed based on the following projects. We thank the authors
