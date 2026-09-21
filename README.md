@@ -34,29 +34,7 @@ Recent advances in video object detection demonstrate that spatiotemporal featur
 | TGBFormer | ResNet-101 | 44.8 | 26.0 |
 | **ADTI-Net (Ours)** | ResNet-101 | **45.9** | **23.2** |
 
-### Ablation Study
 
-Effectiveness of the main components of ADTI-Net on ImageNet VID (ResNet-101):
-
-| Model | Baseline | ST-DTD | TS-DTD | DAFC | TFIL | mAP (%) |
-| :---: | :------: | :----: | :----: | :--: | :--: | :-----: |
-| (a) | ✓ | | | | | 78.4 |
-| (b) | ✓ | ✓ | | | | 84.0 |
-| (c) | ✓ | | ✓ | | | 84.2 |
-| (d) | ✓ | ✓ | ✓ | | | 85.9 |
-| (e) | ✓ | ✓ | ✓ | ✓ | | 86.7 |
-| **(f) ADTI-Net** | ✓ | ✓ | ✓ | ✓ | ✓ | **88.1** |
-
-> **ST-DTD**: spatial-to-temporal decoupled transformer decoder branch. **TS-DTD**: temporal-to-spatial decoupled transformer decoder branch. **DAFC**: dual-branch adaptive feature coupling. **TFIL**: text-driven feature imitation learning.
-
-Implementation details used in this repository (see `configs/r101_train_adti.sh`):
-
-* 1 current frame + 4 randomly sampled support frames per training sample (`--num_ref_frames 4`);
-* 72 object queries per frame, 4 attention heads (`--num_queries 72 --nheads 4`);
-* 2 spatially-decoupled + 3 temporally-decoupled decoder layers in each ADTD branch (`--num_s_dtd_layers 2 --num_t_dtd_layers 3`);
-* local window size G = 256 for the mask self-attention (`--attn_window 256`);
-* TFIL: textual/imitation embedding dimension 128, temperature τ = 0.5 (`--film_dim 128 --film_tau 0.5`);
-* N = 30 frames per sequence at inference (`--max_seq_frames 30`), i.e. sequence-wise parallel detection.
 
 ## Updates
 
