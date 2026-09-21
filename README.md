@@ -133,16 +133,11 @@ checkpoint is saved as `exps/adti_net/r101_adti_base/checkpoint.pth`.
 
 ### Evaluation
 
-Evaluate ADTI-Net on the ImageNet VID validation set with N = 30 frames per
-sequence:
+Evaluate the full ADTI-Net framework using the trained checkpoint:
 
 ```bash
-GPUS_PER_NODE=4 ./tools/run_dist_launch.sh 4 configs/r101_eval_adti.sh
+./tools/eval_m2tdiff.sh exps/m2tdiff/r101_m2tdiff checkpoint.pth
 ```
-
-An ablation variant (e.g. without TFIL) can be evaluated by overriding the
-corresponding coefficients on the command line, for instance
-`--film_loss_coef 0` to disable the imitation loss of TFIL.
 
 ## Acknowledgement
 
