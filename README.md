@@ -140,8 +140,8 @@ Evaluate the full ADTI-Net framework using the trained checkpoint:
 ## Visualization
 
 <div align="center">
-  <img src="assets/images/2.gif" alt="Visualization 1" width="48%">
-  <img src="assets/images/3.gif" alt="Visualization 2" width="48%">
+  <img src="figs/1.gif" alt="Visualization 1" width="48%">
+  <img src="figs/2.gif" alt="Visualization 2" width="48%">
 </div>
 
 ## Acknowledgement
