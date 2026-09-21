@@ -128,7 +128,7 @@ GPUS_PER_NODE=4 ./tools/run_dist_launch.sh 4 configs/r101_train_adti.sh \
 ```
 
 
-### Evaluation
+### Testing ADTI-Net
 
 Evaluate the full ADTI-Net framework using the trained checkpoint:
 
