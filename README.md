@@ -67,30 +67,41 @@ The codebase is built on top of [Deformable DETR](https://github.com/fundamental
 
 ### Dataset Preparation
 
-ADTI-Net is evaluated on the widely used video object detection benchmark,
-**ImageNet VID**. Download the ILSVRC2015 DET and ILSVRC2015 VID datasets from
-[the official website](https://image-net.org/challenges/LSVRC/2015/2015-downloads),
-and convert their annotations to the COCO-style JSON files (the conversion code
-of [mmtracking](https://github.com/open-mmlab/mmtracking/tree/master/tools/convert_datasets/ilsvrc)
-can be used). The joint annotation of the two datasets is used for training.
+M2TDiff is evaluated on the widely used video object detection benchmark, **ImageNet VID**. To further evaluate its generalization capability, we additionally conduct experiments on **UAVDT**. Before training and evaluation, we convert the annotations of both datasets into JSON format using `tools/convert_to_vid_json.py`.
+
+#### ImageNet VID
+
+Download the ILSVRC2015 DET and ILSVRC2015 VID datasets from
+[the official website](https://image-net.org/challenges/LSVRC/2015/2015-downloads).
 
 The expected directory structure is:
 
-```text
-code_root/
-└── data/
-    └── vid/
-        ├── Data/
-        |    ├── DET/
-        |    └── VID/
-        └── annotations/
-             ├── imagenet_vid_train.json
-             ├── imagenet_vid_train_joint_30.json
-             └── imagenet_vid_val.json
-```
+    code_root/
+    └── datasets/
+        └── imagenet_vid/
+            ├── ImageSets/
+            ├── Data/
+            │   ├── DET/
+            │   └── VID/
+            └── Annotations/
+                ├── DET/
+                └── VID/
 
-Point `--vid_path` to this directory, or use symbolic links to place the datasets
-under `datasets/`.
+#### UAVDT
+
+Download the UAVDT dataset from the
+[official UAVDT website](https://sites.google.com/view/grli-uavdt/)
+and organize the dataset according to the following structure:
+
+    code_root/
+    └── datasets/
+        └── uavdt/
+            ├── UAV-benchmark-M/
+            └── UAV-benchmark-MOTD_v1.0/
+
+After downloading and processing the datasets, make sure that the directory
+structure matches the layouts shown above. We recommend using symbolic links
+to place the datasets under the `datasets/` directory.
 
 ### Pretraining the Single-Frame Baseline
 
