@@ -108,7 +108,7 @@ to place the datasets under the `datasets/` directory.
    put the checkpoint into:
 
 ```text
-./exps/our_models/COCO_pretrained_model/
+./exps/ADTI-Net/COCO_pretrained_model/
 ```
 
 2. Train the single-frame baseline, which is used as the resume checkpoint of
@@ -125,7 +125,7 @@ Using the single-frame baseline weights as the resume model:
 ```bash
 # 4 GPUs
 GPUS_PER_NODE=4 ./tools/run_dist_launch.sh 4 configs/r101_train_adti.sh \
-    --resume exps/our_models/exps_single/checkpoint.pth
+    --resume exps/ADTI-Net/r101_single/checkpoint.pth
 ```
 
 
@@ -134,7 +134,7 @@ GPUS_PER_NODE=4 ./tools/run_dist_launch.sh 4 configs/r101_train_adti.sh \
 Evaluate the full ADTI-Net framework using the trained checkpoint:
 
 ```bash
-./tools/eval_m2tdiff.sh exps/m2tdiff/r101_m2tdiff checkpoint.pth
+./tools/eval_adti.sh exps/ADTI-Net/r101_adti checkpoint.pth
 ```
 
 ## Visualization
