@@ -1,7 +1,5 @@
 This repository is an official implementation of ADTI-Net.
 
-**ADTI-Net is a standalone journal work published in IEEE Transactions on Image Processing (TIP). It is NOT the extended version of any conference paper.**
-
 # ADTI-Net: Alternating Decoupled Transformer Imitation Network for Video Object Detection
 
 <div align="center"> <img src="figs/teaser.png" alt="ADTI-Net Framework" width="100%"> </div>
