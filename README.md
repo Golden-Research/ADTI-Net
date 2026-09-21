@@ -150,6 +150,6 @@ This project is developed based on the following projects. We thank the authors
 for releasing their code:
 
 * [Deformable DETR](https://github.com/fundamentalvision/Deformable-DETR)
-* [CLIP](https://github.com/openai/CLIP) (text encoder of the TFIL module)
+* [CLIP](https://github.com/openai/CLIP) 
 
 
