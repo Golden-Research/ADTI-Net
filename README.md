@@ -21,7 +21,7 @@ Recent advances in video object detection demonstrate that spatiotemporal featur
 | TGBFormer | ResNet-101 | Deformable DETR | 86.5 | 24.3 |
 | D2FANet | ResNet-101 | Deformable DETR | 87.7 | 24.6 |
 | **ADTI-Net (Ours)** | ResNet-101 | Deformable DETR | **88.1** | **21.4** |
-| **ADTI-Net (Ours)** | Swin-Base | Deformable DETR | **92.0** | 95.5 |
+| **ADTI-Net (Ours)** | Swin-Base | Deformable DETR | **92.0** | 41.3 |
 
 ### Comparison on UAVDT
 
